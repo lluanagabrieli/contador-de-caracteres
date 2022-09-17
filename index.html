@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Caracteres</title>
+    <!--BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    
+    <style>
+        *{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+        }
+
+        .caixa-texto{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 30px;
+            align-items: center;
+            padding-top: 130px;
+        }
+
+        textarea{
+            resize: none;
+            padding: 10px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="caixa-texto">
+        <h1>Contador de caracteres</h1>
+        <div>
+            <textarea id="text" placeholder="Limite de dígitos: 100 caracteres." onkeyup="contarCaracteres()" maxlength="100" rows="5" cols="33"></textarea>
+        </div>
+
+        <div>
+            <h4 id="caracteresUtilizados">0 / 100</h4>
+            <h4 id="caracteresFaltam">Faltam 100 caracteres.</h4>
+        </div>
+    </div>
+
+    
+
+    <script>
+
+        function contarCaracteres(){
+
+            //o valor que está vindo da caixa
+            let x = document.getElementById('text').value
+
+            //o tamanho desse valor, no caso dos caracteres
+            let tamanho = x.length
+
+            //subtração de 100 - limite de caracteres - menos o tamanho (quantidade) de caracteres digitados.
+            let conta = 100 - tamanho
+
+            //mostrando o tamanho do texto em tempo real através da var tamanho
+            let mostrarCaracteres = document.getElementById('caracteresUtilizados').innerHTML = `${tamanho} / 100`
+
+            //mostrando quantos caracteres faltam através da var conta
+            let caracteresFaltam = document.getElementById('caracteresFaltam').innerHTML = `Faltam ${conta} caracteres.`
+
+        }
+
+    </script>
+</body>
+</html>
